@@ -1,0 +1,64 @@
+# RedCrucible Tool Manifest
+#
+# Each tool entry defines an offensive .NET assembly that the API can
+# obfuscate and serve. The `assembly_path` is relative to the configured
+# assembly cache directory.
+#
+# To add a new tool:
+#   1. Add an entry here
+#   2. Place the pre-compiled base assembly in the cache directory
+#   3. Restart the API (or hit the reload endpoint)
+
+tools:
+  - name: rubeus
+    display_name: Rubeus
+    description: Kerberos abuse toolkit
+    repo_url: https://github.com/GhostPack/Rubeus
+    branch: main
+    assembly_path: rubeus/Rubeus.exe
+    target_framework: net48
+    default_stages: []
+
+  - name: seatbelt
+    display_name: Seatbelt
+    description: Host-survey safety checks
+    repo_url: https://github.com/GhostPack/Seatbelt
+    branch: master
+    assembly_path: seatbelt/Seatbelt.exe
+    target_framework: net48
+    default_stages: []
+
+  - name: sharpkatz
+    display_name: SharpKatz
+    description: Port of Mimikatz in C#
+    repo_url: https://github.com/b4rtik/SharpKatz
+    branch: master
+    assembly_path: sharpkatz/SharpKatz.exe
+    target_framework: net48
+    default_stages:
+      - name: obfuscar
+        options:
+          rename: true
+          encrypt_strings: true
+      - name: dnlib_patcher
+        options:
+          randomize_guids: true
+          mutate_il: true
+
+  - name: sharphound
+    display_name: SharpHound
+    description: BloodHound data collector
+    repo_url: https://github.com/BloodHoundAD/SharpHound
+    branch: main
+    assembly_path: sharphound/SharpHound.exe
+    target_framework: net48
+    default_stages: []
+
+  - name: certify
+    display_name: Certify
+    description: Active Directory Certificate Services abuse
+    repo_url: https://github.com/GhostPack/Certify
+    branch: main
+    assembly_path: certify/Certify.exe
+    target_framework: net48
+    default_stages: []

@@ -1,0 +1,31 @@
+[project]
+name = "redcrucible"
+version = "0.1.0"
+description = "On-demand offensive .NET assembly obfuscation API for red teamers"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.32.0",
+    "pydantic>=2.10.0",
+    "pydantic-settings>=2.7.0",
+    "pyyaml>=6.0",
+    "aiofiles>=24.1.0",
+    "pycryptodome>=3.20.0",
+    "keystone-engine>=0.9.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.24.0",
+    "httpx>=0.28.0",
+    "yara-x>=1.13.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

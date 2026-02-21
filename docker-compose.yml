@@ -1,0 +1,24 @@
+services:
+  api:
+    build: .
+    platform: linux/amd64
+    ports:
+      - "8000:8000"
+    volumes:
+      - artifacts:/app/artifacts
+      - assembly_cache:/app/cache/assemblies
+    environment:
+      - REDCRUCIBLE_LOG_LEVEL=info
+      - REDCRUCIBLE_ARTIFACT_TTL_SECONDS=600
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  artifacts:
+  assembly_cache:
+  redis_data:

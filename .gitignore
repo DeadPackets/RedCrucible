@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+
+# uv
+uv.lock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment
+.env
+
+# Artifacts & caches
+artifacts/
+cache/
+*.bin
+*.shellcode
+
+# .NET build artifacts (but NOT pre-built tools/)
+tools/AssemblyPatcher/bin/
+tools/AssemblyPatcher/obj/
+
+# YARA rules (large, downloaded separately)
+verify/rules/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Docker
+.docker/
+
+# OS
+.DS_Store
+Thumbs.db
